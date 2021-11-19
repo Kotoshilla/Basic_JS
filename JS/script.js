@@ -44,7 +44,7 @@
 //   console.log('Ok');
 // }
 
-// (num === 50) ? console.log('Ok') : console.log('Error'); //Тернарный оператор когода условий 3 
+// (num === 60) ? console.log('Ok') : console.log('Error'); //Тернарный оператор когода условий 3 
 
 // const num = 45;
 
