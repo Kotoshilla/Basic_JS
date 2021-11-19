@@ -66,27 +66,66 @@
 /*Циклы*/
 
 
-let num = 50;
+// let num = 50;
 
-while (num <= 55) {
-  console.log(num);
-  num++;
-}
-
-
-do {
-  console.log(num);
-  num++;
-}
-while (num < 55);
+// while (num <= 55) {
+//   console.log(num);
+//   num++;
+// }
 
 
-let numTwo = 50;
+// do {
+//   console.log(num);
+//   num++;
+// }
+// while (num < 55);
 
-for (let i = 1; i < 8; i++) {
-  if (i === 6) {
-    // break;
-    continue; //Пропускает шаг который нам не нужно но при эотм не прерывает цикл
+
+// let numTwo = 50;
+
+// for (let i = 1; i < 8; i++) {
+//   if (i === 6) {
+//     // break;
+//     continue; //Пропускает шаг который нам не нужно но при эотм не прерывает цикл
+//   }
+//   console.log(i);
+// }
+
+
+const numberOfFilm = +prompt('Сколько фильмов вы уже посмотрели?', '');
+
+const personalMoveDB = {
+  count: numberOfFilm,
+  movies: {},
+  actors: {},
+  genres: [],
+  privat: false
+};
+
+
+for (let i = 0; i < 2; i++) {
+  const a = prompt('Один из последних просмотренных фильмов?', ''),
+        b = prompt('На сколько оцените его?', '');
+
+  if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+    personalMoveDB.movies[a] = b;
+    console.log('done');
+  } else {
+    console.log('error');
+    i--;
   }
-  console.log(i);
 }
+
+
+if (personalMoveDB.count < 10) {
+  console.log('Просмотренно довольно мало фильмов');
+} else if (personalMoveDB.count >= 10 && personalMoveDB.count < 30) {
+  console.log('Вы классический зритель');
+} else if (personalMoveDB.count >= 30) {
+  console.log('Вы киноман');
+} else {
+  console.log('Произошла ошибка');
+}
+
+console.log(personalMoveDB);
+
