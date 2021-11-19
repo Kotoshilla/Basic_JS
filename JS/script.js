@@ -59,6 +59,6 @@ switch (numTwo) {
     console.log('В точку!');
     break;
   default:
-    console.log('Ни один из кейсов не прошел(');
+    console.log('Ни один из кейсов не прошел');
 }
 
