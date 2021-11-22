@@ -270,30 +270,135 @@
 
 
 
-function first() {
-  //Do something
-  setTimeout(function() {
-    console.log(1);
-  }, 500);
-}
+// function first() {
+//   //Do something
+//   setTimeout(function() {
+//     console.log(1);
+//   }, 500);
+// }
 
-function second() {
-  console.log(2);
-}
+// function second() {
+//   console.log(2);
+// }
 
-first();
-second();
+// first();
+// second();
 
 
 
-function learnJS (lang, Callback) {
-  console.log(`Я учу: ${lang}`);
-  Callback();
-}
+// function learnJS (lang, Callback) {
+//   console.log(`Я учу: ${lang}`);
+//   Callback();
+// }
 
-function done () {
-  console.log('я прошел этот урок!');
-}
+// function done () {
+//   console.log('я прошел этот урок!');
+// }
 
-learnJS('JavaScript', done);
+// learnJS('JavaScript', done);
 
+
+
+
+
+/*ОбЪекты, деструктуризация объектов (ES6)*/
+
+
+
+
+
+// const obj = new Object(); //можно создавать объект так, но лучше так не делать
+
+
+const options = {
+  name: 'test',
+  width: 1024,
+  height: 1024,
+  colors: {
+    border: 'black',
+    bg: 'red'
+  }
+};
+
+console.log(options.name);
+
+delete options.name; //так можно удалить опр ключ
+
+console.log(options);
+
+let counter = 0;
+
+for (let key in options) {
+  if (typeof(options[key]) === 'object') {
+    for (let i in options[key]) {
+      console.log(`Свойство ${i} имеет значеие ${options[key][i]}`);
+      counter++;
+    }
+  } else {
+  console.log(`Свойство ${key} имеет значение ${options[key]}`);
+    counter++;
+  }
+}// Метод перебора объектов и объектов внутри объекта
+
+console.log(counter); //можно посчитать сколько свойств в объекте
+
+const optionsTwo = {
+    name: 'test',
+    width: 1024,
+    height: 1024,
+    colors: {
+      border: 'black',
+      bg: 'red'
+    }
+  };
+
+  console.log(Object.keys(optionsTwo).length); //показывает количество 
+  
+
+  const objGame = {
+    name: 'Tekken JP',
+    age: 1994,
+    price: '?',
+    genre: 'Fighting',
+    studio: 'Bandai Namco Studios',
+    platform: {
+      PlayStation: true,
+      Android: true,
+      Xbox: false
+
+    }
+  };
+
+
+  for (let key in objGame) {
+      console.log(`свойство ${key} имеет значение ${objGame[key]}`);
+  } //метод перебора объекта
+
+  console.log(Object.keys(objGame).length);  //Простой способ посчитать кол-во ключей в обьекте
+
+
+
+  const objGameTwo = {
+    name: 'Mortal Kombat',
+    age: 1992,
+    price: '?',
+    genre: 'Fighting',
+    studio: 'Midway Games',
+    platform: {
+      PlayStation: true,
+      Android: true,
+      Xbox: true
+    },
+    makeTest: function() {
+      console.log('Test');
+    } //Так создают свои методы внутри объекта 
+  };
+
+  objGameTwo.makeTest();
+
+
+  const {PlayStation, Xbox} = objGameTwo.platform; //Деструктуризация 
+//(вытаскивает кусочки свойств из объекта в качестве отдельной переменной)
+  console.log(PlayStation);
+
+  
