@@ -92,44 +92,78 @@
 // }
 
 
-// const numberOfFilm = +prompt('Сколько фильмов вы уже посмотрели?', '');
+let numberOfFilms;
 
-// const personalMoveDB = {
-//   count: numberOfFilm,
-//   movies: {},
-//   actors: {},
-//   genres: [],
-//   privat: false
-// };
+function start() {
+  numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
 
+  while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+    numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
 
-// for (let i = 0; i < 2; i++) {
-//   const a = prompt('Один из последних просмотренных фильмов?', ''),
-//         b = prompt('На сколько оцените его?', '');
+  }
+} 
 
-//   if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-//     personalMoveDB.movies[a] = b;
-//     console.log('done');
-//   } else {
-//     console.log('error');
-//     i--;
-//   }
-// }
+start();
+
+const personalMoveDB = {
+  count: numberOfFilms,
+  movies: {},
+  actors: {},
+  genres: [],
+  privat: false
+};
 
 
-// if (personalMoveDB.count < 10) {
-//   console.log('Просмотренно довольно мало фильмов');
-// } else if (personalMoveDB.count >= 10 && personalMoveDB.count < 30) {
-//   console.log('Вы классический зритель');
-// } else if (personalMoveDB.count >= 30) {
-//   console.log('Вы киноман');
-// } else {
-//   console.log('Произошла ошибка');
-// }
 
-// console.log(personalMoveDB);
+function rememberMyFilms () {
+  for (let i = 0; i < 2; i++) {
+    const a = prompt('Один из последних просмотренных фильмов?', ''),
+          b = prompt('На сколько оцените его?', '');
+  
+    if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+      personalMoveDB.movies[a] = b;
+      console.log('done');
+    } else {
+      console.log('error');
+      i--;
+    }
+  }
+}
+
+rememberMyFilms();
 
 
+
+function detectPersonalLevel() {
+  if (personalMoveDB.count < 10) {
+    console.log('Просмотренно довольно мало фильмов');
+  } else if (personalMoveDB.count >= 10 && personalMoveDB.count < 30) {
+    console.log('Вы классический зритель');
+  } else if (personalMoveDB.count >= 30) {
+    console.log('Вы киноман');
+  } else {
+    console.log('Произошла ошибка');
+  }
+}
+
+detectPersonalLevel();
+
+function showMyDB (hidden) {
+  if (!hidden) {
+    console.log(personalMoveDB);
+  }
+}
+
+showMyDB(personalMoveDB.privat);
+
+function writeYourGenres () {
+  for (let i = 1; i <= 3; i++) {
+    personalMoveDB.genres[i - 1] = prompt( `Ваш любимый жанр под номером ${i}`);
+  }
+}
+
+
+writeYourGenres();
 
 /*Функции, стрелочные функции*/
 
@@ -187,45 +221,45 @@
 
 
 
-const str = 'test';
-const arr = [1, 2, 3];
+// const str = 'test';
+// const arr = [1, 2, 3];
 
-console.log(str.length);
-console.log(arr.length);
-console.log(str[2]);
+// console.log(str.length);
+// console.log(arr.length);
+// console.log(str[2]);
 
-console.log(str.toUpperCase()); //Верхний регистр 
-console.log(str.toLowerCase()); //Нижний регистр
-
-
-const fruit = 'Some fruit';
-
-console.log(fruit.indexOf('fruit'));  //Поиск куска строки или буквы в утри куска строки
+// console.log(str.toUpperCase()); //Верхний регистр 
+// console.log(str.toLowerCase()); //Нижний регистр
 
 
-const logg = 'Hello world';
+// const fruit = 'Some fruit';
 
-console.log(logg.slice(6, 11)); //Выризает часть текста по индексу
-//если указать только с какого момента то текст будет выризаться до конца
-console.log(logg.slice(-6, -1));// Можно использовать и отрицательное значене 
-
-console.log(logg.substring(6, 11)); // Тоже вырезает но не может использовать отрицательные значения
-
-console.log(logg.substr(6, 5)); //говорит с какого индекса и количество строк для вырезания
+// console.log(fruit.indexOf('fruit'));  //Поиск куска строки или буквы в утри куска строки
 
 
+// const logg = 'Hello world';
 
-const num = 12.2;
+// console.log(logg.slice(6, 11)); //Выризает часть текста по индексу
+// //если указать только с какого момента то текст будет выризаться до конца
+// console.log(logg.slice(-6, -1));// Можно использовать и отрицательное значене 
 
-console.log(Math.round(num)); //Округляет число до ближайшего целого
+// console.log(logg.substring(6, 11)); // Тоже вырезает но не может использовать отрицательные значения
+
+// console.log(logg.substr(6, 5)); //говорит с какого индекса и количество строк для вырезания
 
 
 
-const test = '12.2px';
+// const num = 12.2;
 
-console.log(parseInt(test)); //Привращает число в другую систему исчисления
-console.log(parseFloat(test)); //Изначально служит для того чтоб вернуть строку или число в десятичном варианте
-//Возвращяет с дробными значениями
+// console.log(Math.round(num)); //Округляет число до ближайшего целого
+
+
+
+// const test = '12.2px';
+
+// console.log(parseInt(test)); //Привращает число в другую систему исчисления
+// console.log(parseFloat(test)); //Изначально служит для того чтоб вернуть строку или число в десятичном варианте
+// //Возвращяет с дробными значениями
 
 
 
