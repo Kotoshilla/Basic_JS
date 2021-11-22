@@ -92,40 +92,91 @@
 // }
 
 
-const numberOfFilm = +prompt('Сколько фильмов вы уже посмотрели?', '');
+// const numberOfFilm = +prompt('Сколько фильмов вы уже посмотрели?', '');
 
-const personalMoveDB = {
-  count: numberOfFilm,
-  movies: {},
-  actors: {},
-  genres: [],
-  privat: false
+// const personalMoveDB = {
+//   count: numberOfFilm,
+//   movies: {},
+//   actors: {},
+//   genres: [],
+//   privat: false
+// };
+
+
+// for (let i = 0; i < 2; i++) {
+//   const a = prompt('Один из последних просмотренных фильмов?', ''),
+//         b = prompt('На сколько оцените его?', '');
+
+//   if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+//     personalMoveDB.movies[a] = b;
+//     console.log('done');
+//   } else {
+//     console.log('error');
+//     i--;
+//   }
+// }
+
+
+// if (personalMoveDB.count < 10) {
+//   console.log('Просмотренно довольно мало фильмов');
+// } else if (personalMoveDB.count >= 10 && personalMoveDB.count < 30) {
+//   console.log('Вы классический зритель');
+// } else if (personalMoveDB.count >= 30) {
+//   console.log('Вы киноман');
+// } else {
+//   console.log('Произошла ошибка');
+// }
+
+// console.log(personalMoveDB);
+
+
+
+/*Функции, стрелочные функции*/
+
+let num = 20; //глобальная переменная 
+
+function showFirstMessage(text) {
+  console.log(text);
+  let num = 10; // локальная переменная (видна только внутри функции)
+  console.log(num);
+}
+
+
+showFirstMessage('Hello World');
+console.log(num);
+
+function calc(a, b) {
+  return (a + b);
+}
+
+console.log(calc(4, 5));
+console.log(calc(12, 5));
+console.log(calc(45, 5));
+console.log(calc(1, 5));
+
+function ret () {
+  let num = 50;
+  return num;
+}
+
+const anotherNum = ret();
+console.log(anotherNum);
+
+//Function expression
+
+const logger = function () {
+  console.log('Hello');
 };
 
+logger();
 
-for (let i = 0; i < 2; i++) {
-  const a = prompt('Один из последних просмотренных фильмов?', ''),
-        b = prompt('На сколько оцените его?', '');
+// Стрелочныая фуикция
 
-  if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-    personalMoveDB.movies[a] = b;
-    console.log('done');
-  } else {
-    console.log('error');
-    i--;
-  }
-}
+const calculate = (a, b) => a + b;
 
+const calculateTwo = (a, b) => {
+  console.log('1');
+  return a + b;
+};
 
-if (personalMoveDB.count < 10) {
-  console.log('Просмотренно довольно мало фильмов');
-} else if (personalMoveDB.count >= 10 && personalMoveDB.count < 30) {
-  console.log('Вы классический зритель');
-} else if (personalMoveDB.count >= 30) {
-  console.log('Вы киноман');
-} else {
-  console.log('Произошла ошибка');
-}
-
-console.log(personalMoveDB);
 
