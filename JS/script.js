@@ -310,95 +310,149 @@
 // const obj = new Object(); //можно создавать объект так, но лучше так не делать
 
 
-const options = {
-  name: 'test',
-  width: 1024,
-  height: 1024,
-  colors: {
-    border: 'black',
-    bg: 'red'
-  }
-};
+// const options = {
+//   name: 'test',
+//   width: 1024,
+//   height: 1024,
+//   colors: {
+//     border: 'black',
+//     bg: 'red'
+//   }
+// };
 
-console.log(options.name);
+// console.log(options.name);
 
-delete options.name; //так можно удалить опр ключ
+// delete options.name; //так можно удалить опр ключ
 
-console.log(options);
+// console.log(options);
 
-let counter = 0;
+// let counter = 0;
 
-for (let key in options) {
-  if (typeof(options[key]) === 'object') {
-    for (let i in options[key]) {
-      console.log(`Свойство ${i} имеет значеие ${options[key][i]}`);
-      counter++;
-    }
-  } else {
-  console.log(`Свойство ${key} имеет значение ${options[key]}`);
-    counter++;
-  }
-}// Метод перебора объектов и объектов внутри объекта
+// for (let key in options) {
+//   if (typeof(options[key]) === 'object') {
+//     for (let i in options[key]) {
+//       console.log(`Свойство ${i} имеет значеие ${options[key][i]}`);
+//       counter++;
+//     }
+//   } else {
+//   console.log(`Свойство ${key} имеет значение ${options[key]}`);
+//     counter++;
+//   }
+// }// Метод перебора объектов и объектов внутри объекта
 
-console.log(counter); //можно посчитать сколько свойств в объекте
+// console.log(counter); //можно посчитать сколько свойств в объекте
 
-const optionsTwo = {
-    name: 'test',
-    width: 1024,
-    height: 1024,
-    colors: {
-      border: 'black',
-      bg: 'red'
-    }
-  };
+// const optionsTwo = {
+//     name: 'test',
+//     width: 1024,
+//     height: 1024,
+//     colors: {
+//       border: 'black',
+//       bg: 'red'
+//     }
+//   };
 
-  console.log(Object.keys(optionsTwo).length); //показывает количество 
+//   console.log(Object.keys(optionsTwo).length); //показывает количество 
   
 
-  const objGame = {
-    name: 'Tekken JP',
-    age: 1994,
-    price: '?',
-    genre: 'Fighting',
-    studio: 'Bandai Namco Studios',
-    platform: {
-      PlayStation: true,
-      Android: true,
-      Xbox: false
+//   const objGame = {
+//     name: 'Tekken JP',
+//     age: 1994,
+//     price: '?',
+//     genre: 'Fighting',
+//     studio: 'Bandai Namco Studios',
+//     platform: {
+//       PlayStation: true,
+//       Android: true,
+//       Xbox: false
 
-    }
-  };
-
-
-  for (let key in objGame) {
-      console.log(`свойство ${key} имеет значение ${objGame[key]}`);
-  } //метод перебора объекта
-
-  console.log(Object.keys(objGame).length);  //Простой способ посчитать кол-во ключей в обьекте
+//     }
+//   };
 
 
+//   for (let key in objGame) {
+//       console.log(`свойство ${key} имеет значение ${objGame[key]}`);
+//   } //метод перебора объекта
 
-  const objGameTwo = {
-    name: 'Mortal Kombat',
-    age: 1992,
-    price: '?',
-    genre: 'Fighting',
-    studio: 'Midway Games',
-    platform: {
-      PlayStation: true,
-      Android: true,
-      Xbox: true
-    },
-    makeTest: function() {
-      console.log('Test');
-    } //Так создают свои методы внутри объекта 
-  };
-
-  objGameTwo.makeTest();
+//   console.log(Object.keys(objGame).length);  //Простой способ посчитать кол-во ключей в обьекте
 
 
-  const {PlayStation, Xbox} = objGameTwo.platform; //Деструктуризация 
-//(вытаскивает кусочки свойств из объекта в качестве отдельной переменной)
-  console.log(PlayStation);
 
-  
+//   const objGameTwo = {
+//     name: 'Mortal Kombat',
+//     age: 1992,
+//     price: '?',
+//     genre: 'Fighting',
+//     studio: 'Midway Games',
+//     platform: {
+//       PlayStation: true,
+//       Android: true,
+//       Xbox: true
+//     },
+//     makeTest: function() {
+//       console.log('Test');
+//     } //Так создают свои методы внутри объекта 
+//   };
+
+//   objGameTwo.makeTest();
+
+
+//   const {PlayStation, Xbox} = objGameTwo.platform; //Деструктуризация 
+// //(вытаскивает кусочки свойств из объекта в качестве отдельной переменной)
+//   console.log(PlayStation);
+
+
+
+
+/*Массивы и Псевдомассивы*/
+
+
+
+const arr = [11, 2, 16, 3, 7, 22, 31, 4, 95];
+
+arr.pop(); // Удоляет последний элемент в массиве
+arr.push(87); // Добавляет элемент в конец массива
+
+console.log(arr);
+
+for (let i = 0; i < arr.length; i++) {
+  console.log(arr[i]);
+}
+
+for (let value of arr) {
+  console.log(value);
+}
+
+arr[99] = 0;
+console.log(arr.length);
+//покажет 100 в массиве даже если значений меньше
+//Так как в JS свойство length состоит из последего значения и +1
+//Если вывести в консоль массив то он покажет много пустых ячеек
+
+
+const arrTwo = [12, 54, 7, 87, 4, 5, 3, 9, 7];
+
+arrTwo.forEach(function(item, i, arrTwo) {
+  console.log(`${i}: ${item} Внутри массива ${arrTwo}`);
+});// Перебирает массив методом forEach
+
+
+
+const str = prompt('', '');
+const products = str.split(', '); // Создает массив и из промпта добавляет значения через запятую в него
+
+
+console.log(products);
+
+
+const strTwo = prompt('', '');
+const productsTwo = strTwo.split(', '); // Создает массив и из промпта добавляет значения через запятую в него
+productsTwo.sort();// Отсортирует в алфавитном порядке (сортирует от первого значения цифр если массив с ними)
+productsTwo.sort(compareNum); //можно в метод вставить колбек функцию и теперь все отсортируется по возрастанию
+
+console.log(productsTwo.join('; ')); // из созданного массива делает строку
+                                      //В консоле получаем строку через точку с запятой
+function compareNum(a, b) {
+  return a - b;
+}
+
