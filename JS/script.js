@@ -133,50 +133,104 @@
 
 /*Функции, стрелочные функции*/
 
-let num = 20; //глобальная переменная 
+// let num = 20; //глобальная переменная 
 
-function showFirstMessage(text) {
-  console.log(text);
-  let num = 10; // локальная переменная (видна только внутри функции)
-  console.log(num);
-}
+// function showFirstMessage(text) {
+//   console.log(text);
+//   let num = 10; // локальная переменная (видна только внутри функции)
+//   console.log(num);
+// }
 
 
-showFirstMessage('Hello World');
-console.log(num);
+// showFirstMessage('Hello World');
+// console.log(num);
 
-function calc(a, b) {
-  return (a + b);
-}
+// function calc(a, b) {
+//   return (a + b);
+// }
 
-console.log(calc(4, 5));
-console.log(calc(12, 5));
-console.log(calc(45, 5));
-console.log(calc(1, 5));
+// console.log(calc(4, 5));
+// console.log(calc(12, 5));
+// console.log(calc(45, 5));
+// console.log(calc(1, 5));
 
-function ret () {
-  let num = 50;
-  return num;
-}
+// function ret () {
+//   let num = 50;
+//   return num;
+// }
 
-const anotherNum = ret();
-console.log(anotherNum);
+// const anotherNum = ret();
+// console.log(anotherNum);
 
-//Function expression
+// //Function expression
 
-const logger = function () {
-  console.log('Hello');
-};
+// const logger = function () {
+//   console.log('Hello');
+// };
 
-logger();
+// logger();
 
-// Стрелочныая фуикция
+// // Стрелочныая фуикция
 
-const calculate = (a, b) => a + b;
+// const calculate = (a, b) => a + b;
 
-const calculateTwo = (a, b) => {
-  console.log('1');
-  return a + b;
-};
+// const calculateTwo = (a, b) => {
+//   console.log('1');
+//   return a + b;
+// };
+
+
+
+
+/*Методы и свойства сторок и чисел */
+
+
+
+
+const str = 'test';
+const arr = [1, 2, 3];
+
+console.log(str.length);
+console.log(arr.length);
+console.log(str[2]);
+
+console.log(str.toUpperCase()); //Верхний регистр 
+console.log(str.toLowerCase()); //Нижний регистр
+
+
+const fruit = 'Some fruit';
+
+console.log(fruit.indexOf('fruit'));  //Поиск куска строки или буквы в утри куска строки
+
+
+const logg = 'Hello world';
+
+console.log(logg.slice(6, 11)); //Выризает часть текста по индексу
+//если указать только с какого момента то текст будет выризаться до конца
+console.log(logg.slice(-6, -1));// Можно использовать и отрицательное значене 
+
+console.log(logg.substring(6, 11)); // Тоже вырезает но не может использовать отрицательные значения
+
+console.log(logg.substr(6, 5)); //говорит с какого индекса и количество строк для вырезания
+
+
+
+const num = 12.2;
+
+console.log(Math.round(num)); //Округляет число до ближайшего целого
+
+
+
+const test = '12.2px';
+
+console.log(parseInt(test)); //Привращает число в другую систему исчисления
+console.log(parseFloat(test)); //Изначально служит для того чтоб вернуть строку или число в десятичном варианте
+//Возвращяет с дробными значениями
+
+
+
+
+
+
 
 
