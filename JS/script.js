@@ -408,51 +408,170 @@
 
 
 
-const arr = [11, 2, 16, 3, 7, 22, 31, 4, 95];
+// const arr = [11, 2, 16, 3, 7, 22, 31, 4, 95];
 
-arr.pop(); // Удоляет последний элемент в массиве
-arr.push(87); // Добавляет элемент в конец массива
+// arr.pop(); // Удоляет последний элемент в массиве
+// arr.push(87); // Добавляет элемент в конец массива
 
-console.log(arr);
+// console.log(arr);
 
-for (let i = 0; i < arr.length; i++) {
-  console.log(arr[i]);
+// for (let i = 0; i < arr.length; i++) {
+//   console.log(arr[i]);
+// }
+
+// for (let value of arr) {
+//   console.log(value);
+// }
+
+// arr[99] = 0;
+// console.log(arr.length);
+// //покажет 100 в массиве даже если значений меньше
+// //Так как в JS свойство length состоит из последего значения и +1
+// //Если вывести в консоль массив то он покажет много пустых ячеек
+
+
+// const arrTwo = [12, 54, 7, 87, 4, 5, 3, 9, 7];
+
+// arrTwo.forEach(function(item, i, arrTwo) {
+//   console.log(`${i}: ${item} Внутри массива ${arrTwo}`);
+// });// Перебирает массив методом forEach
+
+
+
+// const str = prompt('', '');
+// const products = str.split(', '); // Создает массив и из промпта добавляет значения через запятую в него
+
+
+// console.log(products);
+
+
+// const strTwo = prompt('', '');
+// const productsTwo = strTwo.split(', '); // Создает массив и из промпта добавляет значения через запятую в него
+// productsTwo.sort();// Отсортирует в алфавитном порядке (сортирует от первого значения цифр если массив с ними)
+// productsTwo.sort(compareNum); //можно в метод вставить колбек функцию и теперь все отсортируется по возрастанию
+
+// console.log(productsTwo.join('; ')); // из созданного массива делает строку
+//                                       //В консоле получаем строку через точку с запятой
+// function compareNum(a, b) {
+//   return a - b;
+// }
+
+
+
+
+/*Передача по ссылке или по значению*/
+/*Spread операторы (ES-ES9)*/
+
+
+
+
+let a = 5,
+    b = a;
+
+b = b + 5;
+
+console.log(b);
+console.log(a);
+
+
+const obj = {
+    a: 5,
+    b: 1
+};
+
+const copy = obj;// Не копирует, а передает ссылу на объект
+
+copy.a = 10;// Модифицируя копию, мы модифицируем и основной объект
+//Такое поведение и называется передача по ссылке
+
+console.log(copy);
+console.log(obj);
+
+
+
+function copyObj(mainObj) {
+    let objCopy = {};
+
+    let key;
+    for (key in mainObj) {
+        objCopy[key] = mainObj[key];
+    }
+    return objCopy;
 }
 
-for (let value of arr) {
-  console.log(value);
+const numbers = {
+    a: 2,
+    b: 5,
+    c: {
+        x: 7,
+        y: 4
+    }
+};
+
+const newNumbers = copyObj(numbers);
+
+newNumbers.a = 10;
+
+console.log(newNumbers);
+console.log(numbers);
+
+//Так через циклы можно скопировать объект поверхностно
+
+const add = {
+    a: 17,
+    e: 20
+};
+
+console.log(Object.assign(numbers, add));
+
+
+const clone = Object.assign({}, add);
+
+clone.d = 20;
+
+console.log(add);
+console.log(clone);
+
+//Клонирование массива
+
+const oldArray = ['a', 'b', 'c'];
+const newArray = oldArray.slice();
+
+newArray[1] = 12;
+console.log(newArray);
+console.log(oldArray);
+
+
+
+const video = ['youtube', 'vimio', 'rutube'],
+      blogs = ['wordpress', 'livejurournal', 'blogger'],
+      internet = [...video, ...blogs, 'vk', 'facebook'];
+
+console.log(internet);
+
+
+function log (a, b, c) {
+    console.log(a);
+    console.log(b);
+    console.log(c);
 }
 
-arr[99] = 0;
-console.log(arr.length);
-//покажет 100 в массиве даже если значений меньше
-//Так как в JS свойство length состоит из последего значения и +1
-//Если вывести в консоль массив то он покажет много пустых ячеек
+const num = [2, 5, 6];
+
+log(...num);
 
 
-const arrTwo = [12, 54, 7, 87, 4, 5, 3, 9, 7];
-
-arrTwo.forEach(function(item, i, arrTwo) {
-  console.log(`${i}: ${item} Внутри массива ${arrTwo}`);
-});// Перебирает массив методом forEach
+const arrayTwo = ['a', 'b'];
+const NewArrayTwo = [...arrayTwo];
 
 
+const newObjTwo = {
+    one: 1,
+    two: 2
+};
 
-const str = prompt('', '');
-const products = str.split(', '); // Создает массив и из промпта добавляет значения через запятую в него
+const newObjTwoClone = {...newObjTwo};
 
+console.log(newObjTwoClone);
 
-console.log(products);
-
-
-const strTwo = prompt('', '');
-const productsTwo = strTwo.split(', '); // Создает массив и из промпта добавляет значения через запятую в него
-productsTwo.sort();// Отсортирует в алфавитном порядке (сортирует от первого значения цифр если массив с ними)
-productsTwo.sort(compareNum); //можно в метод вставить колбек функцию и теперь все отсортируется по возрастанию
-
-console.log(productsTwo.join('; ')); // из созданного массива делает строку
-                                      //В консоле получаем строку через точку с запятой
-function compareNum(a, b) {
-  return a - b;
-}
 
