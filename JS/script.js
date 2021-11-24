@@ -465,113 +465,155 @@
 
 
 
-let a = 5,
-    b = a;
+// let a = 5,
+//     b = a;
 
-b = b + 5;
+// b = b + 5;
 
-console.log(b);
-console.log(a);
-
-
-const obj = {
-    a: 5,
-    b: 1
-};
-
-const copy = obj;// Не копирует, а передает ссылу на объект
-
-copy.a = 10;// Модифицируя копию, мы модифицируем и основной объект
-//Такое поведение и называется передача по ссылке
-
-console.log(copy);
-console.log(obj);
+// console.log(b);
+// console.log(a);
 
 
+// const obj = {
+//     a: 5,
+//     b: 1
+// };
 
-function copyObj(mainObj) {
-    let objCopy = {};
+// const copy = obj;// Не копирует, а передает ссылу на объект
 
-    let key;
-    for (key in mainObj) {
-        objCopy[key] = mainObj[key];
+// copy.a = 10;// Модифицируя копию, мы модифицируем и основной объект
+// //Такое поведение и называется передача по ссылке
+
+// console.log(copy);
+// console.log(obj);
+
+
+
+// function copyObj(mainObj) {
+//     let objCopy = {};
+
+//     let key;
+//     for (key in mainObj) {
+//         objCopy[key] = mainObj[key];
+//     }
+//     return objCopy;
+// }
+
+// const numbers = {
+//     a: 2,
+//     b: 5,
+//     c: {
+//         x: 7,
+//         y: 4
+//     }
+// };
+
+// const newNumbers = copyObj(numbers);
+
+// newNumbers.a = 10;
+
+// console.log(newNumbers);
+// console.log(numbers);
+
+// //Так через циклы можно скопировать объект поверхностно
+
+// const add = {
+//     a: 17,
+//     e: 20
+// };
+
+// console.log(Object.assign(numbers, add));
+
+
+// const clone = Object.assign({}, add);
+
+// clone.d = 20;
+
+// console.log(add);
+// console.log(clone);
+
+// //Клонирование массива
+
+// const oldArray = ['a', 'b', 'c'];
+// const newArray = oldArray.slice();
+
+// newArray[1] = 12;
+// console.log(newArray);
+// console.log(oldArray);
+
+
+
+// const video = ['youtube', 'vimio', 'rutube'],
+//       blogs = ['wordpress', 'livejurournal', 'blogger'],
+//       internet = [...video, ...blogs, 'vk', 'facebook'];
+
+// console.log(internet);
+
+
+// function log (a, b, c) {
+//     console.log(a);
+//     console.log(b);
+//     console.log(c);
+// }
+
+// const num = [2, 5, 6];
+
+// log(...num);
+
+
+// const arrayTwo = ['a', 'b'];
+// const NewArrayTwo = [...arrayTwo];
+
+
+// const newObjTwo = {
+//     one: 1,
+//     two: 2
+// };
+
+// const newObjTwoClone = {...newObjTwo};
+
+// console.log(newObjTwoClone);
+
+
+
+
+
+/* Основы ООП, прототипно-ориентировонное наследование */
+
+
+
+
+let str = 'some';
+let strObj = new String(str);
+
+console.log(typeof(str));
+console.log(typeof(strObj));
+
+console.dir([1, 2, 3, 5]);
+
+
+
+const soldier = {
+    health: 400,
+    armor: 100,
+    sayHello: function() {
+        console.log('Hello');
     }
-    return objCopy;
-}
-
-const numbers = {
-    a: 2,
-    b: 5,
-    c: {
-        x: 7,
-        y: 4
-    }
 };
 
-const newNumbers = copyObj(numbers);
+const JonhTwo = Object.create(soldier);
+// Современный метод прототипирования
+JonhTwo.sayHello();
 
-newNumbers.a = 10;
-
-console.log(newNumbers);
-console.log(numbers);
-
-//Так через циклы можно скопировать объект поверхностно
-
-const add = {
-    a: 17,
-    e: 20
+const Jonh = {
+    health: 200
 };
 
-console.log(Object.assign(numbers, add));
+Jonh.__proto__ = soldier; // В современном коде не используется
+
+Object.setPrototypeOf(Jonh, soldier); // Современный вариант использования прототипирования
 
 
-const clone = Object.assign({}, add);
-
-clone.d = 20;
-
-console.log(add);
-console.log(clone);
-
-//Клонирование массива
-
-const oldArray = ['a', 'b', 'c'];
-const newArray = oldArray.slice();
-
-newArray[1] = 12;
-console.log(newArray);
-console.log(oldArray);
-
-
-
-const video = ['youtube', 'vimio', 'rutube'],
-      blogs = ['wordpress', 'livejurournal', 'blogger'],
-      internet = [...video, ...blogs, 'vk', 'facebook'];
-
-console.log(internet);
-
-
-function log (a, b, c) {
-    console.log(a);
-    console.log(b);
-    console.log(c);
-}
-
-const num = [2, 5, 6];
-
-log(...num);
-
-
-const arrayTwo = ['a', 'b'];
-const NewArrayTwo = [...arrayTwo];
-
-
-const newObjTwo = {
-    one: 1,
-    two: 2
-};
-
-const newObjTwoClone = {...newObjTwo};
-
-console.log(newObjTwoClone);
-
+console.log(Jonh.armor);
+Jonh.sayHello();
 
