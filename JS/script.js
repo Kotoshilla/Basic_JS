@@ -703,64 +703,103 @@
 
 
 
-// To String
+// // To String
 
-// 1)
-console.log(typeof(String(null)));
-console.log(typeof(String(5)));
-
-
-//2)
-console.log(typeof(5+''));
+// // 1)
+// console.log(typeof(String(null)));
+// console.log(typeof(String(5)));
 
 
-const num = 5;
-
-console.log("https://vk.com/catalog/" + num);
-
-
-const fontSize = 26 + 'px';
+// //2)
+// console.log(typeof(5+''));
 
 
+// const num = 5;
 
-// To Number 
-
-// 1)
-console.log(typeof(Number('4')));
-
-//2)
-console.log(typeof(+'5'));
-
-//3)
-console.log(typeof(parseInt('15px', 10)));
+// console.log("https://vk.com/catalog/" + num);
 
 
-let answ = +prompt('Hello', '');
+// const fontSize = 26 + 'px';
 
 
-// To boolean
 
-// 0, '', null, undefined, NaN; = false
+// // To Number 
 
-// 1)
+// // 1)
+// console.log(typeof(Number('4')));
 
-let switcher = null;
+// //2)
+// console.log(typeof(+'5'));
 
-if (switcher) {
-  console.log('Working...');
-}
+// //3)
+// console.log(typeof(parseInt('15px', 10)));
 
-switcher = 1;
 
-if (switcher) {
-  console.log('Working...');
-}
+// let answ = +prompt('Hello', '');
 
-// 2)
 
-console.log(typeof(Boolean('4')));
+// // To boolean
 
-//3)
+// // 0, '', null, undefined, NaN; = false
 
-console.log(typeof(!!'4444'));
+// // 1)
+
+// let switcher = null;
+
+// if (switcher) {
+//   console.log('Working...');
+// }
+
+// switcher = 1;
+
+// if (switcher) {
+//   console.log('Working...');
+// }
+
+// // 2)
+
+// console.log(typeof(Boolean('4')));
+
+// //3)
+
+// console.log(typeof(!!'4444'));
+
+
+
+
+/* Получение элементов со сраницы */
+
+
+                                  
+const box = document.getElementById('box'); //Выводит элемент по ID
+
+console.log(box);
+
+
+const btns = document.getElementsByTagName('button'); //Выведит колекцию с этим тегом в виде массива
+const btnsTwo = document.getElementsByTagName('button')[1]; //Через квад.скобки выводит тот что по индексу
+
+console.log(btns);
+console.log(btns[0]);// чтоб не получить массив нужно обращаться через индекс
+console.log(btnsTwo);
+
+
+const circles = document.getElementsByClassName('circle'); //Выводит элементы по классу 
+                                                           //Не нужно ставть точку перед классом
+console.log(circles[1]);
+
+
+//Более современые методы
+
+const hearts = document.querySelectorAll('.heart'); //Поиск селекторов 
+//в скобках пишется так как бы вы искали в CSS, то есть через точки, решетки 
+console.log(hearts); //querySelectorAll имеет метод ForEach, но это так же псевдомассив
+hearts.forEach(item => {
+  console.log(item);
+});
+
+const oneHeart = document.querySelector('.heart');//поиск первого селектора с таким именем
+
+console.log(oneHeart);
+
 
