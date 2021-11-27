@@ -771,35 +771,102 @@
 
 
                                   
-const box = document.getElementById('box'); //Выводит элемент по ID
+// const box = document.getElementById('box'); //Выводит элемент по ID
 
-console.log(box);
-
-
-const btns = document.getElementsByTagName('button'); //Выведит колекцию с этим тегом в виде массива
-const btnsTwo = document.getElementsByTagName('button')[1]; //Через квад.скобки выводит тот что по индексу
-
-console.log(btns);
-console.log(btns[0]);// чтоб не получить массив нужно обращаться через индекс
-console.log(btnsTwo);
+// console.log(box);
 
 
-const circles = document.getElementsByClassName('circle'); //Выводит элементы по классу 
-                                                           //Не нужно ставть точку перед классом
-console.log(circles[1]);
+// const btns = document.getElementsByTagName('button'); //Выведит колекцию с этим тегом в виде массива
+// const btnsTwo = document.getElementsByTagName('button')[1]; //Через квад.скобки выводит тот что по индексу
+
+// console.log(btns);
+// console.log(btns[0]);// чтоб не получить массив нужно обращаться через индекс
+// console.log(btnsTwo);
 
 
-//Более современые методы
+// const circles = document.getElementsByClassName('circle'); //Выводит элементы по классу 
+//                                                            //Не нужно ставть точку перед классом
+// console.log(circles[1]);
 
-const hearts = document.querySelectorAll('.heart'); //Поиск селекторов 
-//в скобках пишется так как бы вы искали в CSS, то есть через точки, решетки 
-console.log(hearts); //querySelectorAll имеет метод ForEach, но это так же псевдомассив
+
+// //Более современые методы
+
+// const hearts = document.querySelectorAll('.heart'); //Поиск селекторов 
+// //в скобках пишется так как бы вы искали в CSS, то есть через точки, решетки 
+// console.log(hearts); //querySelectorAll имеет метод ForEach, но это так же псевдомассив
+// hearts.forEach(item => {
+//   console.log(item);
+// });
+
+// const oneHeart = document.querySelector('.heart');//поиск первого селектора с таким именем
+
+// console.log(oneHeart);
+
+
+
+/* Действия с элементами на странице */
+
+
+
+const box = document.getElementById('box'),
+      btns = document.getElementsByTagName('button'),
+      circles = document.getElementsByClassName('circle'),
+      hearts = document.querySelectorAll('.heart'),
+      oneHeart = document.querySelector('.heart'),
+      wrapper = document.querySelector('.wrapper'); 
+
+box.style.backgroundColor = 'yellowgreen'; 
+box.style.width = '500px'; 
+
+box.style.cssText = 'background-color: purple; width: 500px';// Тут уже обращаются как в css
+
+btns[2].style.borderRadius = '100%';
+
+/*circles.style.backgroundColor = 'red';*/ //Будет ошибка 
+//так как он обращается не к опр элементу, а к псевдомассиву 
+//Нужно указать четко на тот элемент что будет изменяться
+
+
+// for (let i = 0; i < hearts.length; i++) {
+//     hearts[i].style.backgroundColor = 'Brown';
+// } 
+
 hearts.forEach(item => {
-  console.log(item);
-});
+    item.style.backgroundColor = 'yellowgreen';
+}); //Лучше использовать спец методы 
 
-const oneHeart = document.querySelector('.heart');//поиск первого селектора с таким именем
 
-console.log(oneHeart);
+const div = document.createElement('div'); //Создеат внутри JS, на странице он не будет виден
+// const text = document.createTextNode('Тут был я'); // Такой текст уже появиться на странице
+
+div.classList.add('black'); //Добавляем нами созданному диву класс 
+
+document.body.append(div);//Добавляет в конец боди нами созданный DIV
+wrapper.append(div); //Добавляет в конец wrapper
+wrapper.prepend(div); //Добавляет в перед 
+
+ hearts[0].before(div); //Добавлет перед классом наш DIV
+ hearts[0].after(div);  //Добавлет после первого сердца наш DIV
+
+ circles[0].remove(); //Удоляет выюрнный элемент
+
+ hearts[1].replaceWith(circles[1]); //Меняет местами элементы  
+
+//Команды которые немного устарели
+
+wrapper.appendChild(div); //Добавляет в конец Div
+wrapper.insertBefore(div, hearts[0]); //Добавляет перед классом Hearts[0] нвш Div
+wrapper.removeChild(hearts[2]); //Удоляет выбранный элемент
+wrapper.replaceChild(circles[1], hearts[0]); //Меняет местами
+
+div.innerHTML = "<h1>Hello</h1>"; //Можно добавить текст и Html стркутуру внуть Divа
+div.textContent = "Hello"; //Добавляет текст
+
+div.insertAdjacentHTML('beforebegin', '<h2>Hello</h2>');
+div.insertAdjacentHTML('afterbegin', '<h2>HelloTwo</h2>');
+div.insertAdjacentHTML('beforeend', '<h2>HelloThree</h2>');
+div.insertAdjacentHTML('afterend', '<h2>HelloFour</h2>');
+
+
 
 
