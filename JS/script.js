@@ -808,65 +808,118 @@
 
 
 
-const box = document.getElementById('box'),
-      btns = document.getElementsByTagName('button'),
-      circles = document.getElementsByClassName('circle'),
-      hearts = document.querySelectorAll('.heart'),
-      oneHeart = document.querySelector('.heart'),
-      wrapper = document.querySelector('.wrapper'); 
+// const box = document.getElementById('box'),
+//       btns = document.getElementsByTagName('button'),
+//       circles = document.getElementsByClassName('circle'),
+//       hearts = document.querySelectorAll('.heart'),
+//       oneHeart = document.querySelector('.heart'),
+//       wrapper = document.querySelector('.wrapper'); 
 
-box.style.backgroundColor = 'yellowgreen'; 
-box.style.width = '500px'; 
+// box.style.backgroundColor = 'yellowgreen'; 
+// box.style.width = '500px'; 
 
-box.style.cssText = 'background-color: purple; width: 500px';// Тут уже обращаются как в css
+// box.style.cssText = 'background-color: purple; width: 500px';// Тут уже обращаются как в css
 
-btns[2].style.borderRadius = '100%';
+// btns[2].style.borderRadius = '100%';
 
-/*circles.style.backgroundColor = 'red';*/ //Будет ошибка 
-//так как он обращается не к опр элементу, а к псевдомассиву 
-//Нужно указать четко на тот элемент что будет изменяться
-
-
-// for (let i = 0; i < hearts.length; i++) {
-//     hearts[i].style.backgroundColor = 'Brown';
-// } 
-
-hearts.forEach(item => {
-    item.style.backgroundColor = 'yellowgreen';
-}); //Лучше использовать спец методы 
+// /*circles.style.backgroundColor = 'red';*/ //Будет ошибка 
+// //так как он обращается не к опр элементу, а к псевдомассиву 
+// //Нужно указать четко на тот элемент что будет изменяться
 
 
-const div = document.createElement('div'); //Создеат внутри JS, на странице он не будет виден
-// const text = document.createTextNode('Тут был я'); // Такой текст уже появиться на странице
+// // for (let i = 0; i < hearts.length; i++) {
+// //     hearts[i].style.backgroundColor = 'Brown';
+// // } 
 
-div.classList.add('black'); //Добавляем нами созданному диву класс 
-
-document.body.append(div);//Добавляет в конец боди нами созданный DIV
-wrapper.append(div); //Добавляет в конец wrapper
-wrapper.prepend(div); //Добавляет в перед 
-
- hearts[0].before(div); //Добавлет перед классом наш DIV
- hearts[0].after(div);  //Добавлет после первого сердца наш DIV
-
- circles[0].remove(); //Удоляет выюрнный элемент
-
- hearts[1].replaceWith(circles[1]); //Меняет местами элементы  
-
-//Команды которые немного устарели
-
-wrapper.appendChild(div); //Добавляет в конец Div
-wrapper.insertBefore(div, hearts[0]); //Добавляет перед классом Hearts[0] нвш Div
-wrapper.removeChild(hearts[2]); //Удоляет выбранный элемент
-wrapper.replaceChild(circles[1], hearts[0]); //Меняет местами
-
-div.innerHTML = "<h1>Hello</h1>"; //Можно добавить текст и Html стркутуру внуть Divа
-div.textContent = "Hello"; //Добавляет текст
-
-div.insertAdjacentHTML('beforebegin', '<h2>Hello</h2>');
-div.insertAdjacentHTML('afterbegin', '<h2>HelloTwo</h2>');
-div.insertAdjacentHTML('beforeend', '<h2>HelloThree</h2>');
-div.insertAdjacentHTML('afterend', '<h2>HelloFour</h2>');
+// hearts.forEach(item => {
+//     item.style.backgroundColor = 'yellowgreen';
+// }); //Лучше использовать спец методы 
 
 
+// const div = document.createElement('div'); //Создеат внутри JS, на странице он не будет виден
+// // const text = document.createTextNode('Тут был я'); // Такой текст уже появиться на странице
+
+// div.classList.add('black'); //Добавляем нами созданному диву класс 
+
+// document.body.append(div);//Добавляет в конец боди нами созданный DIV
+// wrapper.append(div); //Добавляет в конец wrapper
+// wrapper.prepend(div); //Добавляет в перед 
+
+//  hearts[0].before(div); //Добавлет перед классом наш DIV
+//  hearts[0].after(div);  //Добавлет после первого сердца наш DIV
+
+//  circles[0].remove(); //Удоляет выюрнный элемент
+
+//  hearts[1].replaceWith(circles[1]); //Меняет местами элементы  
+
+// //Команды которые немного устарели
+
+// wrapper.appendChild(div); //Добавляет в конец Div
+// wrapper.insertBefore(div, hearts[0]); //Добавляет перед классом Hearts[0] нвш Div
+// wrapper.removeChild(hearts[2]); //Удоляет выбранный элемент
+// wrapper.replaceChild(circles[1], hearts[0]); //Меняет местами
+
+// div.innerHTML = "<h1>Hello</h1>"; //Можно добавить текст и Html стркутуру внуть Divа
+// div.textContent = "Hello"; //Добавляет текст
+
+// div.insertAdjacentHTML('beforebegin', '<h2>Hello</h2>');
+// div.insertAdjacentHTML('afterbegin', '<h2>HelloTwo</h2>');
+// div.insertAdjacentHTML('beforeend', '<h2>HelloThree</h2>');
+// div.insertAdjacentHTML('afterend', '<h2>HelloFour</h2>');
+
+
+
+
+/* События и их обработчики */
+
+
+
+
+const btns = document.querySelectorAll('button'),
+      overlay = document.querySelector('.overlay');
+
+// btn.onclick = function() {
+//     alert('Click');
+// };  //лучше не использвать такой варинат 
+
+// btn.addEventListener('click', () => {
+//     alert('Click');
+// });
+
+// btn.addEventListener('click', () => {
+//     alert('Second Click');
+// });
+
+// let i = 0;
+const deletElement = (event) => {
+    console.log(event.currentTarget);
+    console.log(event.type);
+    // i++;
+    // if (i == 1) {
+    //     btn.removeEventListener('click', deletElement);
+    // }
+};
+
+btn.addEventListener('click', (event) => {
+    console.log(event.target);
+    event.target.remove();
+    console.log('Hover');
+});
+
+btn.addEventListener('click', deletElement);
+overlay.addEventListener('click', deletElement);
+//Всплытие событий - когда срабатывает на самом вложеном элементе и вверх по иерархии
+
+btns.forEach(btn => {
+    btn.addEventListener('click', deletElement, {once: true});
+});
+
+const link = document.querySelector('a');
+
+link.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    console.log(event.target);
+});
 
 
