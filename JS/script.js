@@ -961,25 +961,47 @@
 
 
 
-// touchstart
-// touchmove
-// touchend
-// touchenter
-// touchleave
-// touchcancel
+// // touchstart
+// // touchmove
+// // touchend
+// // touchenter
+// // touchleave
+// // touchcancel
 
-window.addEventListener('DOMContentLoaded', () => {
-    const box = document.querySelector('.box');
+// window.addEventListener('DOMContentLoaded', () => {
+//     const box = document.querySelector('.box');
 
-    box.addEventListener('touchstart', (e) => {
-        e.preventDefault();
+//     box.addEventListener('touchstart', (e) => {
+//         e.preventDefault();
 
-        console.log('Start');
-        console.log(e.changedTouches);
-    });
-});
+//         console.log('Start');
+//         console.log(e.changedTouches);
+//     });
+// });
 
 
-// touches // Получение списка всех пальцев котрые на экране 
-// targetTouches // вывод пальца котрый взаимодействует именно с этим элементом
-// changedTouches // Список пальцев участвовуют в текушем событии
+// // touches // Получение списка всех пальцев котрые на экране 
+// // targetTouches // вывод пальца котрый взаимодействует именно с этим элементом
+// // changedTouches // Список пальцев участвовуют в текушем событии
+
+
+
+
+/* Async, defer, Динамические скрипты */
+
+
+
+const p = document.querySelectorAll('p');
+console.log(p);
+
+
+
+function loadScript(src) {
+    const script = document.createElement('script');
+    script.src = src;
+    script.async = false;
+    document.body.append(script);
+}
+
+loadScript("../JS/test.js");
+loadScript("../JS/some.js");
